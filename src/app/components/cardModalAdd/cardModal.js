@@ -5,6 +5,7 @@ import { postImage } from '../../../services/images.services'
 import { useFileStorage } from '../../hooks/useFileStorage'
 
 export const CardModal = ({ closeModal }) => {
+  const { setImages } = useContext(Context)
   const [isUrl, setIsUrl] = useState(false)
   const [isUpload, setIsUpload] = useState(false)
   const [url, setUrl] = useState('')
@@ -52,6 +53,7 @@ export const CardModal = ({ closeModal }) => {
         url: url,
       }
       postImage(image)
+      setImages((prevImage) => [...prevImage, image])
     }
     if (file) {
       const image = {
@@ -59,6 +61,7 @@ export const CardModal = ({ closeModal }) => {
         url: file.toString(),
       }
       postImage(image)
+      setImages((prevImage) => [...prevImage, image])
     }
   }
 

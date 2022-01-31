@@ -1,9 +1,20 @@
 import style from './nav-bar.module.css'
 import logo from './../../../assets/search.png'
-import { useState } from 'react'
+import Context from '../../context/image.context'
+import { getImageLabel } from '../../../services/images.services'
+import { useEffect, useContext } from 'react'
 
 export const Search = () => {
-  const [keyboard, setKeyboard] = useState('')
+  const { setImages, keyboard, setKeyboard } = useContext(Context)
+
+  useEffect(() => {
+    if (keyboard) {
+      getImageLabel(keyboard).then((response) =>
+        response ? setImages(response) : null
+      )
+    }
+  }, [keyboard])
+
   const handleKeyboard = (event) => {
     setKeyboard(event.target.value)
   }

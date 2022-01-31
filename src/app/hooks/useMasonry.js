@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useMasonry = (data) => {
+export const useMasonry = (data, keyboard) => {
   console.log(data)
   const [column1, setColumn1] = useState([])
   const [column2, setColumn2] = useState([])
@@ -65,19 +65,19 @@ export const useMasonry = (data) => {
   }, [data, totalColumns])
   useEffect(() => {
     if (totalColumns === 3) {
-      if (column1.length && column2.length && column3.length) {
+      if (keyboard || (column1.length && column2.length && column3.length)) {
         setColumns((prevColumn) => [...prevColumn, column1, column2, column3])
       }
     }
     if (totalColumns === 2) {
       console.log('entra2')
-      if (column1.length && column2.length) {
+      if (keyboard || (column1.length && column2.length)) {
         setColumns((prevColumn) => [...prevColumn, column1, column2])
       }
     }
     if (totalColumns === 1) {
       console.log('entra2')
-      if (column1.length) {
+      if (keyboard || column1.length) {
         setColumns((prevColumn) => [...prevColumn, column1])
       }
     }

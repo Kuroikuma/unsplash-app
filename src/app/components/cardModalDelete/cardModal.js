@@ -13,10 +13,8 @@ export const CardModalDelete = ({ closeModal, id }) => {
   }
   const handleDeleteImage = () => {
     if (id === idW) {
-      const baseUrl = `https://powerful-forest-65007.herokuapp.com/image/${id}`
-      fetch(baseUrl, {
-        method: 'DELETE',
-      }).then(() => setImages(images.filter((image) => image.id !== id)))
+      deleteImage(id)
+      setImages(images.filter((image) => image.id !== id))
       setIsError(false)
       setNotification(true)
       setTimeout(() => {

@@ -37,6 +37,17 @@ export const deleteImage = (id) => {
   fetch(baseUrl, {
     method: 'DELETE',
   })
-    .then(() => console.log('f'))
+    .then((response) => console.log(response))
     .catch((error) => console.log(error))
+}
+export const getImageLabel = (label) => {
+  return fetch(`${apiUrl}/label/${label}`)
+    .then((res) => res.json())
+    .then((response) => {
+      const data = ([] = [...response])
+      return data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
