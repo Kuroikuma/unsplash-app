@@ -1,7 +1,7 @@
-const apiUrl = 'https://powerful-forest-65007.herokuapp.com/image'
+const apiUrl = 'https://powerful-forest-65007.herokuapp.com/api/'
 
 export async function postImage(image) {
-  const response = await fetch(apiUrl, {
+  const response = await fetch(`${apiUrl}image`, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -22,7 +22,7 @@ export async function postImage(image) {
 }
 
 export const getImage = () => {
-  return fetch(apiUrl)
+  return fetch(`${apiUrl}image`)
     .then((res) => res.json())
     .then((response) => {
       const data = ([] = [...response])
@@ -33,7 +33,7 @@ export const getImage = () => {
     })
 }
 export const deleteImage = (id) => {
-  const baseUrl = `https://powerful-forest-65007.herokuapp.com/image/${id}`
+  const baseUrl = `${apiUrl}image/${id}`
   fetch(baseUrl, {
     method: 'DELETE',
   })
@@ -41,7 +41,7 @@ export const deleteImage = (id) => {
     .catch((error) => console.log(error))
 }
 export const getImageLabel = (label) => {
-  return fetch(`${apiUrl}/label/${label}`)
+  return fetch(`${apiUrl}image/label/${label}`)
     .then((res) => res.json())
     .then((response) => {
       const data = ([] = [...response])

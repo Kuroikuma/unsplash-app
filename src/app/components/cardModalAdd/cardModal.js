@@ -70,7 +70,7 @@ export const CardModal = ({ closeModal }) => {
       postImage(image)
       setImages((prevImage) => [...prevImage, image])
     }
-    socket.emit('addImage', 'esta funcionando?')
+    socket.emit('client:addImage', 'esta funcionando?')
   }
 
   function handleClick() {

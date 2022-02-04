@@ -1,6 +1,7 @@
 import { CardModalDeleteView } from './cardModal.view'
 import { deleteImage } from '../../../services/images.services'
 import { useState, useContext } from 'react'
+import { socket } from '../socket/socket'
 import Context from '../../context/image.context'
 
 export const CardModalDelete = ({ closeModal, id }) => {
@@ -17,6 +18,7 @@ export const CardModalDelete = ({ closeModal, id }) => {
       setImages(images.filter((image) => image.id !== id))
       setIsError(false)
       setNotification(true)
+      socket.emit('client:deleteImage', 'esta funcionando?')
       setTimeout(() => {
         setNotification(false)
       }, 5000)

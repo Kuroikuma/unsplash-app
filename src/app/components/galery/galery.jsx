@@ -10,7 +10,7 @@ export const Galery = () => {
   const { images, setImages, keyboard } = useContext(Context)
   useEffect(() => {
     getImage().then((response) => setImages(response))
-    socket.on('loadImage', (imagesSocket) => {
+    socket.on('server:loadImage', (imagesSocket) => {
       setImages(imagesSocket)
     })
     return () => {
