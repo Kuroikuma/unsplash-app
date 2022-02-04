@@ -1,5 +1,5 @@
 import { CardModalView } from './cardModal.view'
-import { useState, useRef, useContext } from 'react'
+import { useState, useRef, useContext, useEffect } from 'react'
 import Context from '../../context/image.context'
 import { socket } from '../socket/socket'
 import { postImage } from '../../../services/images.services'
@@ -14,6 +14,12 @@ export const CardModal = ({ closeModal }) => {
   const [notification, setNotification] = useState(false)
   const [label, setLabel] = useState('')
   const hiddenFileInput = useRef(null)
+
+  useEffect(() => {
+    return () => {
+      socket.off()
+    }
+  }, [])
 
   const isValidUrl = (string) => {
     try {
