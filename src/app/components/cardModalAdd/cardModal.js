@@ -1,6 +1,7 @@
 import { CardModalView } from './cardModal.view'
 import { useState, useRef, useContext } from 'react'
 import Context from '../../context/image.context'
+import { socket } from '../socket/socket'
 import { postImage } from '../../../services/images.services'
 import { useFileStorage } from '../../hooks/useFileStorage'
 
@@ -63,6 +64,7 @@ export const CardModal = ({ closeModal }) => {
       postImage(image)
       setImages((prevImage) => [...prevImage, image])
     }
+    socket.emit('addImage', 'esta funcionando?')
   }
 
   function handleClick() {
